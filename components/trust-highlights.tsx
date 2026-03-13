@@ -1,40 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { CheckCircle2 } from "lucide-react"
-
-const highlights = [
-  {
-    title: "2000-Year-Old Jain Temple Nearby",
-    description: "A sacred spiritual landmark that adds cultural richness to your weekend retreat",
-    icon: "🏛️",
-  },
-  {
-    title: "Premium Farm Plots",
-    description: "Carefully selected plots with ideal dimensions and natural surroundings",
-    icon: "🌾",
-  },
-  {
-    title: "Resort-Style Amenities",
-    description: "World-class facilities designed for relaxation and entertainment",
-    icon: "✨",
-  },
-  {
-    title: "Clear Titles & Legal Security",
-    description: "100% transparent documentation and complete legal protection for your investment",
-    icon: "📋",
-  },
-  {
-    title: "Future Growth Corridor",
-    description: "Located in high-appreciation zones with planned infrastructure development",
-    icon: "📈",
-  },
-  {
-    title: "Easy Accessibility",
-    description: "Connected via highways with planned 200 ft road development",
-    icon: "🛣️",
-  },
-]
+import { CheckCircle2, Play } from "lucide-react"
 
 export function TrustHighlights() {
   return (
@@ -49,39 +16,103 @@ export function TrustHighlights() {
           className="text-center mb-16"
         >
           <p className="text-primary font-serif font-medium tracking-[0.15em] uppercase text-xs sm:text-sm mb-6">
-            Why Choose Us
+            Experience The Vision
           </p>
-          <h2 className="text-5xl sm:text-6xl font-serif font-bold text-foreground mb-8 tracking-tight">
-            Why NatureNest Estates?
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-foreground mb-8 tracking-tight text-balance">
+            Your Dream Farmland Awaits
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed font-light">
-            Discover what makes us the premier choice for premium countryside living
+            THE DIVINE FARMS offers the perfect combination of natural beauty, modern amenities, and investment value
           </p>
         </motion.div>
 
-        {/* Highlights Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {highlights.map((highlight, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="group p-8 rounded-xl border border-border bg-card hover:shadow-xl transition-all duration-300 hover:border-primary"
-            >
-              <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">
-                {highlight.icon}
+        {/* Media Placeholder - For Photos & Videos */}
+        <div className="grid lg:grid-cols-2 gap-8 mb-16">
+          {/* Main Video/Image Placeholder */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="relative aspect-video rounded-2xl overflow-hidden bg-muted border border-border group cursor-pointer"
+          >
+            <div 
+              className="absolute inset-0 bg-cover bg-center"
+              style={{
+                backgroundImage: "url('/luxury-resort-cottages-in-nature-setting-with-roll.jpg')",
+              }}
+            />
+            <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-colors" />
+            <div className="absolute inset-0 flex flex-col items-center justify-center">
+              <div className="w-20 h-20 bg-accent/90 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <Play size={36} className="text-accent-foreground ml-1" />
               </div>
-              <h3 className="text-2xl font-serif font-bold text-foreground mb-3 tracking-tight">{highlight.title}</h3>
-              <p className="text-muted-foreground leading-relaxed mb-4">{highlight.description}</p>
-              <div className="flex items-center gap-2 text-primary font-medium">
-                <CheckCircle2 size={20} />
-                <span>Verified</span>
+              <p className="text-white font-serif font-bold text-lg">Project Video Coming Soon</p>
+              <p className="text-white/70 text-sm mt-1">Aerial views & walkthrough</p>
+            </div>
+          </motion.div>
+
+          {/* Photo Grid Placeholder */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="grid grid-cols-2 gap-4"
+          >
+            {[
+              { title: "Entrance Gate", subtitle: "Grand Welcome" },
+              { title: "Green Landscapes", subtitle: "Nature Views" },
+              { title: "Internal Roads", subtitle: "Infrastructure" },
+              { title: "Amenity Area", subtitle: "Facilities" },
+            ].map((item, index) => (
+              <div
+                key={index}
+                className="aspect-square rounded-xl overflow-hidden bg-muted border border-border relative group"
+              >
+                <div 
+                  className="absolute inset-0 bg-cover bg-center"
+                  style={{
+                    backgroundImage: `url('/project-${index + 1}-nature-cottage-farm-land.jpg')`,
+                  }}
+                />
+                <div className="absolute inset-0 bg-primary/60 group-hover:bg-primary/70 transition-colors flex flex-col items-center justify-center p-4">
+                  <p className="text-primary-foreground font-serif font-bold text-center">{item.title}</p>
+                  <p className="text-primary-foreground/80 text-sm mt-1">{item.subtitle}</p>
+                  <p className="text-primary-foreground/60 text-xs mt-2">Photo Coming Soon</p>
+                </div>
               </div>
-            </motion.div>
-          ))}
+            ))}
+          </motion.div>
         </div>
+
+        {/* Key Stats */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          viewport={{ once: true }}
+          className="grid grid-cols-2 lg:grid-cols-4 gap-6"
+        >
+          {[
+            { value: "Premium", label: "Plot Sizes", detail: "Multiple Options" },
+            { value: "Clear", label: "Legal Titles", detail: "100% Verified" },
+            { value: "Gated", label: "Community", detail: "24/7 Security" },
+            { value: "Strategic", label: "Location", detail: "Near Kolanupaka" },
+          ].map((stat, index) => (
+            <div
+              key={index}
+              className="p-6 rounded-xl bg-card border border-border text-center hover:border-primary hover:shadow-lg transition-all duration-300"
+            >
+              <p className="text-2xl sm:text-3xl font-serif font-bold text-primary mb-1">{stat.value}</p>
+              <p className="text-foreground font-medium mb-1">{stat.label}</p>
+              <div className="flex items-center justify-center gap-1 text-muted-foreground text-sm">
+                <CheckCircle2 size={14} className="text-primary" />
+                <span>{stat.detail}</span>
+              </div>
+            </div>
+          ))}
+        </motion.div>
       </div>
     </section>
   )

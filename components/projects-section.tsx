@@ -1,42 +1,54 @@
 "use client"
 
 import { motion } from "framer-motion"
-import Link from "next/link"
-import { MapPin, Ruler, IndianRupee } from "lucide-react"
+import { Leaf, Sun, TrendingUp, Shield, MapPin, Home, Trees, Sparkles } from "lucide-react"
 
-const projects = [
+const highlights = [
   {
-    id: "1",
-    name: "NatureNest Kolanupaka",
-    location: "Kolanupaka, Telangana",
-    plotSize: "1000 - 2000 Sq.Ft",
-    startingPrice: "25 Lakhs onwards",
-    image: "/project-1-nature-cottage-farm-land.jpg",
-    description: "Premium farm plots with direct access to the main highway",
+    icon: Leaf,
+    title: "Natural Green Environment",
+    description: "Surrounded by lush greenery and pristine natural landscapes that rejuvenate your soul",
   },
   {
-    id: "2",
-    name: "NatureNest Aleru Greens",
-    location: "Aleru, Telangana",
-    plotSize: "1500 - 2500 Sq.Ft",
-    startingPrice: "35 Lakhs onwards",
-    image: "/project-2-luxury-resort-cottages.jpg",
-    description: "Resort-style cottages with premium amenities and facilities",
+    icon: Sun,
+    title: "Weekend Getaway Feeling",
+    description: "Escape the city stress and enjoy peaceful weekends with family in your own paradise",
   },
   {
-    id: "3",
-    name: "NatureNest Valley Retreat",
-    location: "Kolanupaka Valley",
-    plotSize: "2000 - 3000 Sq.Ft",
-    startingPrice: "45 Lakhs onwards",
-    image: "/project-3-valley-retreat-landscape.jpg",
-    description: "Exclusive valley plots with stunning panoramic views",
+    icon: TrendingUp,
+    title: "Smart Future Investment",
+    description: "Located in a high-growth corridor with excellent appreciation potential",
+  },
+  {
+    icon: Shield,
+    title: "Clear Legal Documentation",
+    description: "100% transparent documentation with complete legal protection for your peace of mind",
+  },
+  {
+    icon: MapPin,
+    title: "Prime Location",
+    description: "Strategically located near Kolanupaka with easy access to major highways and cities",
+  },
+  {
+    icon: Home,
+    title: "Gated Community",
+    description: "Secure gated community with 24/7 security and premium infrastructure",
+  },
+  {
+    icon: Trees,
+    title: "Eco-Friendly Development",
+    description: "Sustainable development practices preserving natural beauty and environment",
+  },
+  {
+    icon: Sparkles,
+    title: "Premium Amenities",
+    description: "World-class facilities designed for comfort, relaxation, and entertainment",
   },
 ]
 
 export function ProjectsSection() {
   return (
-    <section id="projects" className="py-16 sm:py-24 bg-background">
+    <section id="highlights" className="py-16 sm:py-24 bg-secondary/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -47,85 +59,69 @@ export function ProjectsSection() {
           className="text-center mb-16"
         >
           <p className="text-primary font-serif font-medium tracking-[0.15em] uppercase text-xs sm:text-sm mb-6">
-            Our Portfolio
+            Why Choose Us
           </p>
-          <h2 className="text-5xl sm:text-6xl font-serif font-bold text-foreground mb-8 tracking-tight">
-            Explore Our Projects
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-foreground mb-8 tracking-tight text-balance">
+            Project Highlights
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed font-light">
-            Discover our three flagship developments, each offering unique advantages and investment opportunities
+            Discover what makes THE DIVINE FARMS the perfect choice for your dream farmland investment
           </p>
         </motion.div>
 
-        {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
+        {/* Highlights Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {highlights.map((highlight, index) => (
             <motion.div
-              key={project.id}
+              key={index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.15 }}
+              transition={{ duration: 0.5, delay: index * 0.08 }}
               viewport={{ once: true }}
-              className="group rounded-xl overflow-hidden bg-card border border-border shadow-sm hover:shadow-2xl transition-all duration-300"
+              className="group p-8 rounded-xl bg-card border border-border hover:border-primary hover:shadow-xl transition-all duration-300"
             >
-              {/* Project Image */}
-              <div className="relative h-64 overflow-hidden bg-muted">
-                <img
-                  src={project.image}
-                  alt={project.name}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+              <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-5 group-hover:bg-primary/20 transition-colors">
+                <highlight.icon size={28} className="text-primary" />
               </div>
-
-              {/* Project Info */}
-              <div className="p-8">
-                <h3 className="text-2xl font-serif font-bold text-foreground mb-3">
-                  {project.name}
-                </h3>
-
-                <p className="text-muted-foreground mb-6 text-sm">
-                  {project.description}
-                </p>
-
-                {/* Details */}
-                <div className="space-y-4 mb-8 pb-8 border-b border-border">
-                  <div className="flex items-center gap-3">
-                    <MapPin size={18} className="text-primary" />
-                    <span className="text-sm">{project.location}</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <Ruler size={18} className="text-primary" />
-                    <span className="text-sm">{project.plotSize}</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <IndianRupee size={18} className="text-accent" />
-                    <span className="text-sm font-bold text-accent">
-                      {project.startingPrice}
-                    </span>
-                  </div>
-                </div>
-
-                {/* CTAs */}
-                <div className="flex gap-3">
-                  <Link
-                    href={`/project/${project.id}`}
-                    className="flex-1 px-4 py-3 bg-primary text-primary-foreground font-bold rounded-lg text-center text-sm"
-                  >
-                    View Details
-                  </Link>
-
-                  <a
-                    href="tel:9154658651"
-                    className="flex-1 px-4 py-3 border border-accent text-accent font-bold rounded-lg text-center text-sm"
-                  >
-                    Call Now
-                  </a>
-                </div>
-              </div>
+              <h3 className="text-xl font-serif font-bold text-foreground mb-3 tracking-tight">
+                {highlight.title}
+              </h3>
+              <p className="text-muted-foreground text-sm leading-relaxed">
+                {highlight.description}
+              </p>
             </motion.div>
           ))}
         </div>
+
+        {/* Price Section Placeholder */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          viewport={{ once: true }}
+          className="mt-16 p-10 rounded-2xl bg-primary text-primary-foreground text-center"
+        >
+          <h3 className="text-3xl sm:text-4xl font-serif font-bold mb-4">
+            Attractive Pricing & Flexible Payment Plans
+          </h3>
+          <p className="text-lg text-primary-foreground/90 mb-8 max-w-2xl mx-auto font-light">
+            Premium farm plots at competitive prices. Contact us for detailed pricing and exclusive launch offers.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="tel:6309123731"
+              className="px-8 py-4 bg-accent text-accent-foreground font-serif font-bold rounded-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 btn-premium text-lg"
+            >
+              Get Price Details
+            </a>
+            <a
+              href="https://wa.me/916309123731"
+              className="px-8 py-4 bg-white/15 backdrop-blur-md text-primary-foreground font-serif font-bold rounded-lg hover:bg-white/25 transition-all duration-300 border border-white/30 btn-premium text-lg"
+            >
+              WhatsApp Us
+            </a>
+          </div>
+        </motion.div>
       </div>
     </section>
   )

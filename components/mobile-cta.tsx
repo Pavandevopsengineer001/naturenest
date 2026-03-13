@@ -22,11 +22,11 @@ export function MobileCTA() {
       }`}
     >
       <a
-        href="tel:9154658651"
-        className="flex items-center justify-center gap-3 w-full py-5 px-4 bg-gradient-to-r from-primary to-primary/80 text-primary-foreground font-serif font-bold text-lg hover:opacity-90 transition-opacity shadow-lg btn-premium"
+        href="tel:6309123731"
+        className="flex items-center justify-center gap-3 w-full py-4 px-4 bg-gradient-to-r from-primary to-primary/90 text-primary-foreground font-serif font-bold text-lg hover:opacity-95 transition-opacity shadow-lg btn-premium"
       >
-        <Phone size={24} />
-        Call Now: 9154658651
+        <Phone size={22} />
+        Call Now: 6309123731
       </a>
     </div>
   )

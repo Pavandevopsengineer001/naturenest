@@ -2,7 +2,7 @@
 
 import type React from "react"
 import { motion } from "framer-motion"
-import { Phone, Mail, MapPin, Send, AlertCircle, CheckCircle } from "lucide-react"
+import { Phone, Mail, MapPin, Send, AlertCircle, CheckCircle, MessageCircle } from "lucide-react"
 import { useState } from "react"
 
 export function ContactSection() {
@@ -32,14 +32,13 @@ export function ContactSection() {
         return
       }
 
-      console.log("[v0] Email sent successfully:", data)
       setSubmitted(true)
       setTimeout(() => {
         setSubmitted(false)
         setFormData({ name: "", email: "", phone: "", message: "" })
       }, 4000)
     } catch (err) {
-      console.error("[v0] Error submitting form:", err)
+      console.error("Error submitting form:", err)
       setError("Failed to send message. Please try again or call us directly.")
     } finally {
       setLoading(false)
@@ -62,18 +61,18 @@ export function ContactSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-5xl sm:text-6xl font-serif font-bold text-primary-foreground mb-8 tracking-tight">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-primary-foreground mb-8 tracking-tight text-balance">
             Get In Touch
           </h2>
           <p className="text-lg text-primary-foreground/90 max-w-3xl mx-auto leading-relaxed font-light">
-            Have questions? Our team is here to help you find your perfect property
+            Interested in THE DIVINE FARMS? Our team is here to help you find your perfect plot
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-3 gap-8 mb-16">
+        <div className="grid lg:grid-cols-3 gap-6 mb-16">
           {/* Contact Info Cards */}
           <motion.a
-            href="tel:9154658651"
+            href="tel:6309123731"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0 }}
@@ -82,22 +81,24 @@ export function ContactSection() {
           >
             <Phone size={36} className="text-primary-foreground mb-4 group-hover:scale-110 transition-transform" />
             <h3 className="text-2xl font-serif font-bold text-primary-foreground mb-2">Call Us</h3>
-            <p className="text-primary-foreground/90 font-medium">+91 9154658651</p>
-            <p className="text-sm text-primary-foreground/70 mt-2">Available 24/7</p>
+            <p className="text-primary-foreground/90 font-medium text-lg">+91 6309123731</p>
+            <p className="text-sm text-primary-foreground/70 mt-2">Available 9 AM - 8 PM</p>
           </motion.a>
 
           <motion.a
-            href="https://wa.me/919154658651"
+            href="https://wa.me/916309123731"
+            target="_blank"
+            rel="noopener noreferrer"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
             viewport={{ once: true }}
             className="p-8 bg-white/12 backdrop-blur-xl rounded-xl border border-white/20 hover:border-white/50 hover:bg-white/20 transition-all duration-300 cursor-pointer group"
           >
-            <Mail size={36} className="text-primary-foreground mb-4 group-hover:scale-110 transition-transform" />
+            <MessageCircle size={36} className="text-primary-foreground mb-4 group-hover:scale-110 transition-transform" />
             <h3 className="text-2xl font-serif font-bold text-primary-foreground mb-2">WhatsApp</h3>
             <p className="text-primary-foreground/90 font-medium">Chat with us</p>
-            <p className="text-sm text-primary-foreground/70 mt-2">Quick responses</p>
+            <p className="text-sm text-primary-foreground/70 mt-2">Quick responses guaranteed</p>
           </motion.a>
 
           <motion.div
@@ -108,8 +109,8 @@ export function ContactSection() {
             className="p-8 bg-white/12 backdrop-blur-xl rounded-xl border border-white/20 group"
           >
             <MapPin size={36} className="text-primary-foreground mb-4 group-hover:scale-110 transition-transform" />
-            <h3 className="text-2xl font-serif font-bold text-primary-foreground mb-2">Location</h3>
-            <p className="text-primary-foreground/90 font-medium">Kolanupaka & Aleru</p>
+            <h3 className="text-2xl font-serif font-bold text-primary-foreground mb-2">Project Location</h3>
+            <p className="text-primary-foreground/90 font-medium">Near Kolanupaka, Aler</p>
             <p className="text-sm text-primary-foreground/70 mt-2">Telangana, India</p>
           </motion.div>
         </div>
@@ -122,7 +123,12 @@ export function ContactSection() {
           viewport={{ once: true }}
           className="max-w-2xl mx-auto"
         >
-          <form onSubmit={handleSubmit} className="p-10 bg-white rounded-xl shadow-2xl space-y-8">
+          <form onSubmit={handleSubmit} className="p-8 sm:p-10 bg-white rounded-xl shadow-2xl space-y-6">
+            <div className="text-center mb-6">
+              <h3 className="text-2xl font-serif font-bold text-foreground">Request a Callback</h3>
+              <p className="text-muted-foreground mt-2 text-sm">Fill in your details and we'll get back to you shortly</p>
+            </div>
+
             {submitted ? (
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
@@ -132,12 +138,9 @@ export function ContactSection() {
                 <div className="inline-block p-4 bg-green-100 rounded-full mb-6">
                   <CheckCircle size={40} className="text-green-600" />
                 </div>
-                <h3 className="text-3xl font-serif font-bold text-foreground mb-3">Thank You!</h3>
-                <p className="text-muted-foreground text-lg">
-                  We've received your message and will contact you shortly at the phone number provided.
-                </p>
-                <p className="text-sm text-muted-foreground mt-4">
-                  A confirmation email has been sent to {formData.email}
+                <h3 className="text-2xl font-serif font-bold text-foreground mb-3">Thank You!</h3>
+                <p className="text-muted-foreground">
+                  We've received your inquiry about THE DIVINE FARMS. Our team will contact you shortly.
                 </p>
               </motion.div>
             ) : (
@@ -153,9 +156,9 @@ export function ContactSection() {
                   </motion.div>
                 )}
 
-                <div className="grid sm:grid-cols-2 gap-8">
+                <div className="grid sm:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-serif font-bold text-foreground mb-3">Full Name</label>
+                    <label className="block text-sm font-serif font-bold text-foreground mb-2">Full Name</label>
                     <input
                       type="text"
                       name="name"
@@ -164,11 +167,11 @@ export function ContactSection() {
                       placeholder="Your name"
                       required
                       disabled={loading}
-                      className="w-full px-5 py-3.5 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary transition-all font-light disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary transition-all font-light disabled:opacity-50 disabled:cursor-not-allowed"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-serif font-bold text-foreground mb-3">Phone Number</label>
+                    <label className="block text-sm font-serif font-bold text-foreground mb-2">Phone Number</label>
                     <input
                       type="tel"
                       name="phone"
@@ -177,13 +180,13 @@ export function ContactSection() {
                       placeholder="10-digit phone number"
                       required
                       disabled={loading}
-                      className="w-full px-5 py-3.5 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary transition-all font-light disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary transition-all font-light disabled:opacity-50 disabled:cursor-not-allowed"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-serif font-bold text-foreground mb-3">Email</label>
+                  <label className="block text-sm font-serif font-bold text-foreground mb-2">Email</label>
                   <input
                     type="email"
                     name="email"
@@ -192,30 +195,30 @@ export function ContactSection() {
                     placeholder="Your email"
                     required
                     disabled={loading}
-                    className="w-full px-5 py-3.5 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary transition-all font-light disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary transition-all font-light disabled:opacity-50 disabled:cursor-not-allowed"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-serif font-bold text-foreground mb-3">Message</label>
+                  <label className="block text-sm font-serif font-bold text-foreground mb-2">Message (Optional)</label>
                   <textarea
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
-                    placeholder="Your message (optional)"
-                    rows={5}
+                    placeholder="Any specific questions about THE DIVINE FARMS?"
+                    rows={4}
                     disabled={loading}
-                    className="w-full px-5 py-3.5 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary transition-all resize-none font-light disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary transition-all resize-none font-light disabled:opacity-50 disabled:cursor-not-allowed"
                   />
                 </div>
 
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full py-4 px-8 bg-gradient-to-r from-primary to-primary/80 text-primary-foreground font-serif font-bold rounded-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center justify-center gap-3 btn-premium text-lg tracking-wide disabled:opacity-70 disabled:cursor-not-allowed disabled:scale-100"
+                  className="w-full py-4 px-8 bg-primary text-primary-foreground font-serif font-bold rounded-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02] flex items-center justify-center gap-3 btn-premium text-lg disabled:opacity-70 disabled:cursor-not-allowed disabled:scale-100"
                 >
-                  <Send size={24} />
-                  {loading ? "Sending..." : "Send Message"}
+                  <Send size={20} />
+                  {loading ? "Sending..." : "Request Callback"}
                 </button>
               </>
             )}

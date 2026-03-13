@@ -1,33 +1,33 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Cormorant_Garamond, Lora, Geist_Mono } from "next/font/google"
+import { Playfair_Display, Source_Sans_3, Geist_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 
-const cormorant = Cormorant_Garamond({
+const playfair = Playfair_Display({
   subsets: ["latin"],
   variable: "--font-serif",
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700", "800", "900"],
 })
-const lora = Lora({
+const sourceSans = Source_Sans_3({
   subsets: ["latin"],
   variable: "--font-sans",
-  weight: ["400", "500", "600", "700"],
+  weight: ["300", "400", "500", "600", "700"],
 })
 const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-mono" })
 
 export const metadata: Metadata = {
-  title: "NatureNest Estates | Premium Farm Plots & Cottages in Telangana",
+  title: "THE DIVINE FARMS | A New Lifestyle Close to Nature - SRLN Infra Developers",
   description:
-    "Discover premium farm plots and resort-style cottages in Kolanupaka & Aleru, Telangana. Your perfect weekend paradise awaits.",
-  keywords: "farm plots, cottages, real estate, Telangana, Kolanupaka, Aleru, weekend homes",
+    "Experience THE DIVINE FARMS by SRLN Infra Developers near Kolanupaka, Aler. Premium farm plots with natural green environment, perfect for weekend getaway and smart future investment.",
+  keywords: "THE DIVINE FARMS, SRLN Infra Developers, farm plots, Kolanupaka, Aler, weekend getaway, nature living, Telangana real estate",
   openGraph: {
-    title: "NatureNest Estates | Premium Farm Plots & Cottages",
-    description: "Own your weekend paradise in nature",
+    title: "THE DIVINE FARMS | SRLN Infra Developers",
+    description: "A New Lifestyle Close to Nature - Near Kolanupaka, Aler",
     type: "website",
   },
   robots: "index, follow",
-    generator: 'v0.app'
+  generator: "v0.app",
 }
 
 export default function RootLayout({
@@ -38,10 +38,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <meta name="theme-color" content="#524a3a" />
+        <meta name="theme-color" content="#2d5a3d" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
       </head>
-      <body className={`${lora.variable} ${cormorant.variable} ${geistMono.variable} font-sans antialiased`}>
+      <body className={`${sourceSans.variable} ${playfair.variable} ${geistMono.variable} font-sans antialiased`}>
         {children}
         <Analytics />
       </body>
