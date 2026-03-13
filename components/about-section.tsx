@@ -1,12 +1,16 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Award, Target, Eye, CheckCircle2, Building2, Users, Handshake } from "lucide-react"
+import { Award, Target, Eye, CheckCircle2, Building2, Users, Handshake, Phone } from "lucide-react"
 
 export function AboutSection() {
   return (
-    <section id="about" className="py-16 sm:py-24 bg-background">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="about" className="py-16 sm:py-24 bg-background relative overflow-hidden">
+      {/* Decorative elements */}
+      <div className="absolute top-0 right-0 w-80 h-80 bg-accent/5 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -translate-x-1/2 translate-y-1/2" />
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -15,9 +19,15 @@ export function AboutSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <p className="text-accent font-serif font-medium tracking-[0.15em] uppercase text-xs sm:text-sm mb-6">
+          <motion.span
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className="inline-block px-4 py-2 bg-accent/10 rounded-full text-accent font-bold text-sm mb-6"
+          >
             About The Developer
-          </p>
+          </motion.span>
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-foreground mb-8 tracking-tight text-balance">
             SRLN Infra Developers
           </h2>
@@ -36,11 +46,18 @@ export function AboutSection() {
             className="space-y-6"
           >
             {/* Company Card */}
-            <div className="relative rounded-2xl overflow-hidden bg-primary p-8 sm:p-10 text-primary-foreground">
+            <motion.div
+              whileHover={{ scale: 1.02 }}
+              className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-primary via-primary to-primary/90 p-8 sm:p-10 text-primary-foreground shadow-2xl"
+            >
+              <div className="absolute top-0 right-0 w-40 h-40 bg-accent/20 rounded-full blur-3xl" />
               <div className="relative z-10">
-                <div className="w-16 h-16 bg-white/20 rounded-xl flex items-center justify-center mb-6">
+                <motion.div
+                  whileHover={{ rotate: 10 }}
+                  className="w-16 h-16 bg-white/20 rounded-xl flex items-center justify-center mb-6"
+                >
                   <Building2 size={32} className="text-primary-foreground" />
-                </div>
+                </motion.div>
                 <h3 className="text-2xl sm:text-3xl font-serif font-bold mb-4 tracking-tight">
                   SRLN Infra Developers
                 </h3>
@@ -64,18 +81,22 @@ export function AboutSection() {
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
             {/* Contact Card */}
-            <div className="p-6 rounded-xl bg-card border border-border">
+            <motion.div
+              whileHover={{ scale: 1.02 }}
+              className="p-6 rounded-xl bg-card border border-border hover:border-primary hover:shadow-lg transition-all"
+            >
               <p className="text-sm text-muted-foreground mb-2">For inquiries about THE DIVINE FARMS:</p>
               <a 
                 href="tel:6309123731" 
-                className="text-xl font-serif font-bold text-primary hover:text-primary/80 transition-colors"
+                className="flex items-center gap-2 text-xl font-serif font-bold text-primary hover:text-primary/80 transition-colors"
               >
+                <Phone size={20} />
                 +91 6309123731
               </a>
-            </div>
+            </motion.div>
           </motion.div>
 
           {/* About Content */}
@@ -87,7 +108,10 @@ export function AboutSection() {
             className="space-y-6"
           >
             {/* Mission */}
-            <div className="p-6 sm:p-8 rounded-xl bg-primary/5 border border-primary/20 hover:border-primary/40 transition-all">
+            <motion.div
+              whileHover={{ x: 5 }}
+              className="p-6 sm:p-8 rounded-xl bg-primary/5 border border-primary/20 hover:border-primary/40 transition-all"
+            >
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
                   <Target size={24} className="text-primary" />
@@ -100,10 +124,13 @@ export function AboutSection() {
                   </p>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
             {/* Vision */}
-            <div className="p-6 sm:p-8 rounded-xl bg-accent/5 border border-accent/20 hover:border-accent/40 transition-all">
+            <motion.div
+              whileHover={{ x: 5 }}
+              className="p-6 sm:p-8 rounded-xl bg-accent/5 border border-accent/20 hover:border-accent/40 transition-all"
+            >
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center flex-shrink-0">
                   <Eye size={24} className="text-accent" />
@@ -116,10 +143,13 @@ export function AboutSection() {
                   </p>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
             {/* Values */}
-            <div className="p-6 sm:p-8 rounded-xl bg-secondary/30 border border-secondary/50 hover:border-secondary transition-all">
+            <motion.div
+              whileHover={{ x: 5 }}
+              className="p-6 sm:p-8 rounded-xl bg-secondary/30 border border-secondary/50 hover:border-secondary transition-all"
+            >
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 bg-secondary/50 rounded-xl flex items-center justify-center flex-shrink-0">
                   <Award size={24} className="text-primary" />
@@ -132,7 +162,7 @@ export function AboutSection() {
                   </p>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
             {/* Why Choose Us */}
             <div className="pt-4">

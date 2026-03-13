@@ -1,5 +1,6 @@
 "use client"
 
+import { motion } from "framer-motion"
 import { Phone } from "lucide-react"
 import { useState, useEffect } from "react"
 
@@ -16,18 +17,25 @@ export function MobileCTA() {
   }, [])
 
   return (
-    <div
-      className={`fixed bottom-0 left-0 right-0 md:hidden z-40 transition-all duration-300 ${
-        isVisible ? "translate-y-0" : "translate-y-full"
-      }`}
+    <motion.div
+      initial={{ y: 100 }}
+      animate={{ y: isVisible ? 0 : 100 }}
+      transition={{ duration: 0.3 }}
+      className="fixed bottom-0 left-0 right-0 md:hidden z-40"
     >
-      <a
+      <motion.a
         href="tel:6309123731"
-        className="flex items-center justify-center gap-3 w-full py-4 px-4 bg-gradient-to-r from-primary to-primary/90 text-primary-foreground font-serif font-bold text-lg hover:opacity-95 transition-opacity shadow-lg btn-premium"
+        whileTap={{ scale: 0.98 }}
+        className="flex items-center justify-center gap-3 w-full py-4 px-4 bg-gradient-to-r from-primary via-primary to-primary/90 text-primary-foreground font-serif font-bold text-lg shadow-2xl"
       >
-        <Phone size={22} />
+        <motion.div
+          animate={{ rotate: [0, 15, -15, 0] }}
+          transition={{ duration: 0.5, repeat: Infinity, repeatDelay: 2 }}
+        >
+          <Phone size={22} />
+        </motion.div>
         Call Now: 6309123731
-      </a>
-    </div>
+      </motion.a>
+    </motion.div>
   )
 }

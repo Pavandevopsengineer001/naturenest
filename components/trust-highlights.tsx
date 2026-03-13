@@ -1,12 +1,16 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { CheckCircle2, Play } from "lucide-react"
+import { CheckCircle2, Play, Sparkles } from "lucide-react"
 
 export function TrustHighlights() {
   return (
-    <section className="py-16 sm:py-24 bg-background">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-16 sm:py-24 bg-background relative overflow-hidden">
+      {/* Decorative elements */}
+      <div className="absolute top-0 left-0 w-72 h-72 bg-accent/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -15,9 +19,16 @@ export function TrustHighlights() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <p className="text-primary font-serif font-medium tracking-[0.15em] uppercase text-xs sm:text-sm mb-6">
+          <motion.span
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full text-primary font-bold text-sm mb-6"
+          >
+            <Sparkles size={16} />
             Experience The Vision
-          </p>
+          </motion.span>
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-foreground mb-8 tracking-tight text-balance">
             Your Dream Farmland Awaits
           </h2>
@@ -34,19 +45,25 @@ export function TrustHighlights() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="relative aspect-video rounded-2xl overflow-hidden bg-muted border border-border group cursor-pointer"
+            whileHover={{ scale: 1.02 }}
+            className="relative aspect-video rounded-2xl overflow-hidden bg-muted border border-border group cursor-pointer shadow-xl"
           >
             <div 
-              className="absolute inset-0 bg-cover bg-center"
+              className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
               style={{
-                backgroundImage: "url('/luxury-resort-cottages-in-nature-setting-with-roll.jpg')",
+                backgroundImage: "url('/divine-farms-hero.jpg')",
               }}
             />
-            <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-colors" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent group-hover:from-black/80 transition-colors" />
             <div className="absolute inset-0 flex flex-col items-center justify-center">
-              <div className="w-20 h-20 bg-accent/90 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+              <motion.div
+                whileHover={{ scale: 1.1 }}
+                animate={{ scale: [1, 1.05, 1] }}
+                transition={{ duration: 2, repeat: Infinity }}
+                className="w-20 h-20 bg-accent/90 rounded-full flex items-center justify-center mb-4 shadow-lg"
+              >
                 <Play size={36} className="text-accent-foreground ml-1" />
-              </div>
+              </motion.div>
               <p className="text-white font-serif font-bold text-lg">Project Video Coming Soon</p>
               <p className="text-white/70 text-sm mt-1">Aerial views & walkthrough</p>
             </div>
@@ -61,27 +78,28 @@ export function TrustHighlights() {
             className="grid grid-cols-2 gap-4"
           >
             {[
-              { title: "Entrance Gate", subtitle: "Grand Welcome" },
-              { title: "Green Landscapes", subtitle: "Nature Views" },
-              { title: "Internal Roads", subtitle: "Infrastructure" },
-              { title: "Amenity Area", subtitle: "Facilities" },
+              { title: "Farm Cottage", subtitle: "Cozy Stays" },
+              { title: "Glam Pods", subtitle: "Luxury Glamping" },
+              { title: "Swimming Pool", subtitle: "Recreation" },
+              { title: "Beach View", subtitle: "With Gazebo" },
             ].map((item, index) => (
-              <div
+              <motion.div
                 key={index}
-                className="aspect-square rounded-xl overflow-hidden bg-muted border border-border relative group"
+                whileHover={{ scale: 1.05 }}
+                className="aspect-square rounded-xl overflow-hidden bg-muted border border-border relative group shadow-lg"
               >
                 <div 
-                  className="absolute inset-0 bg-cover bg-center"
+                  className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
                   style={{
-                    backgroundImage: `url('/project-${index + 1}-nature-cottage-farm-land.jpg')`,
+                    backgroundImage: "url('/divine-farms-hero.jpg')",
                   }}
                 />
-                <div className="absolute inset-0 bg-primary/60 group-hover:bg-primary/70 transition-colors flex flex-col items-center justify-center p-4">
-                  <p className="text-primary-foreground font-serif font-bold text-center">{item.title}</p>
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/50 to-primary/30 group-hover:from-primary/90 transition-colors flex flex-col items-center justify-center p-4">
+                  <p className="text-primary-foreground font-serif font-bold text-center text-lg">{item.title}</p>
                   <p className="text-primary-foreground/80 text-sm mt-1">{item.subtitle}</p>
-                  <p className="text-primary-foreground/60 text-xs mt-2">Photo Coming Soon</p>
+                  <p className="text-primary-foreground/60 text-xs mt-3 px-3 py-1 bg-white/20 rounded-full">Photo Coming Soon</p>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </motion.div>
         </div>
@@ -95,22 +113,23 @@ export function TrustHighlights() {
           className="grid grid-cols-2 lg:grid-cols-4 gap-6"
         >
           {[
-            { value: "Premium", label: "Plot Sizes", detail: "Multiple Options" },
+            { value: "1.5", label: "Acres Amenities", detail: "World-Class Facilities" },
             { value: "Clear", label: "Legal Titles", detail: "100% Verified" },
             { value: "Gated", label: "Community", detail: "24/7 Security" },
-            { value: "Strategic", label: "Location", detail: "Near Kolanupaka" },
+            { value: "FREE", label: "Resort Membership", detail: "For Plot Buyers" },
           ].map((stat, index) => (
-            <div
+            <motion.div
               key={index}
-              className="p-6 rounded-xl bg-card border border-border text-center hover:border-primary hover:shadow-lg transition-all duration-300"
+              whileHover={{ y: -5 }}
+              className="p-6 rounded-xl bg-card border border-border text-center hover:border-primary hover:shadow-xl transition-all duration-300"
             >
-              <p className="text-2xl sm:text-3xl font-serif font-bold text-primary mb-1">{stat.value}</p>
-              <p className="text-foreground font-medium mb-1">{stat.label}</p>
+              <p className="text-3xl sm:text-4xl font-serif font-bold text-primary mb-2">{stat.value}</p>
+              <p className="text-foreground font-bold mb-1">{stat.label}</p>
               <div className="flex items-center justify-center gap-1 text-muted-foreground text-sm">
-                <CheckCircle2 size={14} className="text-primary" />
+                <CheckCircle2 size={14} className="text-accent" />
                 <span>{stat.detail}</span>
               </div>
-            </div>
+            </motion.div>
           ))}
         </motion.div>
       </div>
